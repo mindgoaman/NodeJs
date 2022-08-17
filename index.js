@@ -1,0 +1,6 @@
+const fs = require("fs")
+// fs.writeFileSync("read.txt", "Hello this is first")
+// fs.appendFileSync("read.txt", " one more new text added")
+const dataRead = fs.readFileSync("read.txt")
+const stringData = dataRead.toString()
+console.log("data read",stringData)
