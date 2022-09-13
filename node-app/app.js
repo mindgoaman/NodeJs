@@ -19,6 +19,24 @@
 // const chalk = require('chalk');
 // console.log(chalk.blue('Hello world!'));
 
-const chalk = require('chalk')
-const successMsge = chalk.green('Success!!')
-console.log(successMsge)
+// const chalk = require('chalk')
+// const successMsge = chalk.green('Success!!')
+// console.log(successMsge)
+
+const yargs = require('yargs');
+yargs.version('1.0.0')
+
+// console.log(process.argv)
+// console.log(yargs.argv)
+
+yargs.command({
+    command: 'Remove',
+    description: 'Remove notes',
+    handler: ()=> {
+         console.log('Remove notes')
+    }
+
+})
+
+
+console.log(yargs.argv)
