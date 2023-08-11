@@ -109,20 +109,12 @@ const dirPath = path.join(__dirname, 'crud/')
 
 
 
-//mondgo db connection with node js
-
-const {MongoClient} = require('mongodb');
-const mongodbPathURL = 'mongodb://localhost:27017';
-const client = new MongoClient(mongodbPathURL);
-const database = 'e-comm'
-
+//get data from mondgo db 
+let dbConnect = require('./mongodb/mongodb');
 const getData = async () => {
-    let result = await client.connect()
-    let db = result.db(database)
-    let collection = db.collection('products')
-    let response = await collection.find({}).toArray()
-    console.log(response)
-
+     let result = await dbConnect()
+     let response = await result.find({ name: 'Samsung m50'}).toArray()
+     console.log("response",response)
 }
 
 getData()
