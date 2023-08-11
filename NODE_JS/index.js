@@ -45,7 +45,7 @@
 //                console.log(`${'file name is'} ${item}`)
 //           })
 //      })
-   
+
 // }
 
 //createFile()
@@ -102,7 +102,7 @@ const dirPath = path.join(__dirname, 'crud/')
 //             console.log("error",err)
 //         }
 //     })
-    
+
 // }
 
 // deleteFile()
@@ -110,12 +110,98 @@ const dirPath = path.join(__dirname, 'crud/')
 
 
 //get data from mondgo db 
-let dbConnect = require('./mongodb/mongodb');
-const getData = async () => {
-     let result = await dbConnect()
-     let response = await result.find({ name: 'Samsung m50'}).toArray()
-     console.log("response",response)
-}
+// let dbConnect = require('./mongodb/mongodb');
+// const getData = async () => {
+//      let result = await dbConnect()
+//      let response = await result.find({ name: 'Samsung m50'}).toArray()
+//      console.log("response",response)
+// }
 
-getData()
+// getData()
+// const readData = require('./mongodb/readData');
+
+// const getData = async () => {
+//     let readResp = await readData()
+//     console.log("readdata",readResp);
+
+// }
+
+// getData()
+
+// const dbConnect = require('./mongodb/mongodb');
+
+// const insertData = async () => {
+//     console.log("insert data")
+//     const db = await dbConnect()
+//     const insertResult = await db.insertOne(
+//        [{
+//             name: "note 6",
+//             brand: 'real me',
+//             price: "$50",
+//             category: "Mobile"
+//         },
+//         {
+//             name: "note 7",
+//             brand: 'real me',
+//             price: "$80",
+//             category: "Mobile"
+//         }]
+//     )
+//     console.log(insertResult?.acknowledged)
+//     if (insertResult?.acknowledged) {
+//          console.log("Data inserted successfully");
+//     }else{
+//         console.log("Data not inserted");
+//     }
+// }
+
+// insertData()
+
+// const insert = require('./mongodb/insertData');
+
+// //many data insertion
+// let manyData = [{
+//     name: "note 11",
+//     brand: 'real me2',
+//     price: "$52",
+//     category: "Mobile2"
+// },
+// {
+//     name: "note 12",
+//     brand: 'real me3',
+//     price: "$89",
+//     category: "Mobile3"
+// }]
+// insert(false, manyData)
+
+// //One data insertion
+// let oneData = {
+//     name: "note 221",
+//     brand: 'real me22',
+//     price: "$543",
+//     category: "Mobile45"
+// }
+// insert(false, oneData)
+
+//update 
+// let update = require('./mongodb/updateData');
+
+// let onedataForbeUpdated = {
+//      name: 'note 12' 
+// }
+
+// let onedataTobeUpdated = {
+//      name: "note 6",
+//      brand: "real me",
+//      price: "$50",
+//      category: "Mobile"
+// }
+
+// update(false, onedataForbeUpdated, onedataTobeUpdated)
+
+const deleteData = require('./mongodb/deleteData');
+let data = {
+   price: "$250"
+}
+deleteData(false, data)
 
