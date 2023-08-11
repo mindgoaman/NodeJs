@@ -5,9 +5,9 @@ const deleteData = async (isMany, dataForbeDeleted) => {
     const db = await dbConnect()
     const insertResult = isMany ? await db.deleteMany(dataForbeDeleted) :  await db.deleteOne(dataForbeDeleted)
     if (insertResult?.acknowledged) {
-         console.log("Data inserted successfully");
+         console.log("Data deleted successfully");
     }else{
-         console.log("Data not inserted");
+         console.log("Data not deleted");
     }
 }
 
