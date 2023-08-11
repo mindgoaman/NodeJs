@@ -199,9 +199,9 @@ const dirPath = path.join(__dirname, 'crud/')
 
 // update(false, onedataForbeUpdated, onedataTobeUpdated)
 
-const deleteData = require('./mongodb/deleteData');
-let data = {
-   price: "$250"
-}
-deleteData(false, data)
+// const deleteData = require('./mongodb/deleteData');
+// let data = {
+//    price: "$250"
+// }
+// deleteData(false, data)
 
