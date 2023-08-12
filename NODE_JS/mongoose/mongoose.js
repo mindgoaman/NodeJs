@@ -1,19 +1,45 @@
+const PRODUCT_SCHEMA = require('../schema/Product');
 const mongodbURL = "mongodb://localhost:27017/e-comm";
 const mangoose = require('mongoose');
+      mangoose.connect(mongodbURL);
 
-const main = async () => {
-    await mangoose.connect(mongodbURL);
-    const PRODUCT_SCHEMA = new mangoose.Schema({
-         name: String,
-         brand: String,
-         price: Number,
-    })
-
-    const ProductModel = mangoose.model('products',PRODUCT_SCHEMA);
-    const data = new ProductModel({name: 'Iphone 15 pro', brand: 'Apple', price: 120000});
+//save data into db(create operation)
+const saveDataInDB = async () => {
+    const product = mangoose.model('products',PRODUCT_SCHEMA);
+    const data = new product({name: 'Iphone 22 pro', brand: 'Apple', price: 225000, category: 'Electronics'});
     const result = await data.save();
     console.log("sharma6655",result);
 
 }
 
-main()
+//save data into db(create operation)
+const readDataFromDB = async () => {
+    const product = mangoose.model('products',PRODUCT_SCHEMA);
+    const result = await product.find();
+    console.log("sharma6655",result);
+
+}
+
+//save data into db(create operation)
+const updateDataInDB = async () => {
+    const product = mangoose.model('products',PRODUCT_SCHEMA);
+    const result = await product.updateOne({name: 'Iphone 22 pro'},{$set: {
+        "brand": "Apple 2",
+        "price": 230000,
+    }});
+    console.log("sharma6655",result);
+
+}
+//save data into db(create operation)
+const deleteDataInDB = async () => {
+    const product = mangoose.model('products',PRODUCT_SCHEMA);
+    const result = await product.deleteOne({name: 'Iphone 22 pro'});
+    console.log("sharma6655",result);
+
+}
+
+// saveDataInDB()
+// readDataFromDB()
+// updateDataInDB()
+// deleteDataInDB()
+
