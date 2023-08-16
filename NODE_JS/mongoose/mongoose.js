@@ -118,4 +118,18 @@ app.post('/upload', upload, (req, resp)=>{
      resp.send("file uploaded")
 })
 
+//Events and Event Emitter
+const EventEmitter = require('events');
+const event = new EventEmitter();
+
+let count = 1;
+event.on("countApi", ()=>{
+     console.log("count api",count++)
+})
+
+app.get("/", (req, resp)=>{
+     resp.send("send event");
+     event.emit("countApi")
+})
+
 app.listen(3000)
