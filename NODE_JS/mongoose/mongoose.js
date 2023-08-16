@@ -61,8 +61,9 @@
 const { ProductsModel } = require('../models/ProductsModel');
 const express = require('express');
 const app = express();
-require('./config');
 app.use(express.json())
+const multer = require('multer');
+require('./config');
 
 //create or save data in db
 app.post('/create-products', async(req, resp) => {
@@ -98,6 +99,23 @@ app.get('/search/:key', async(req, resp)=>{
         ]
      })
      resp.send(result)
+})
+
+const upload = multer({
+    storage: multer.diskStorage({
+        destination:function(req, file, cb)
+        {
+            cb(null, "../uploads")
+        },
+        filename: function(req, file, cb)
+        {
+            cb(null, file.filename + "-" + Date.now() + ".jpg") 
+        }
+    })
+}).single("user_file")
+
+app.post('/upload', upload, (req, resp)=>{
+     resp.send("file uploaded")
 })
 
 app.listen(3000)
